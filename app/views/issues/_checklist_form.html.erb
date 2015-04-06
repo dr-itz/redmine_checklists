@@ -5,7 +5,11 @@
       <label><%=l(:label_checklist_plural)%></label>
   		<% @issue.checklists.build if @issue.checklists.blank? || @issue.checklists.last.subject.present? %>
   	  <%= fields_for :issue, issue do |f| -%>
-  	    <span id="checklist_form_items" data-checklist-fields='<%= fields(f, :checklists) %>'>
+  	    <span id="checklist_form_items" data-checklist-fields='<%=
+          f.fields_for 'checklists', Checklist.new, :child_index => "new_checklists" do |builder|
+            render :partial => 'issues/checklist_fields', :locals => { :f => builder }
+          end
+         %>'>
   			  <%= f.fields_for :checklists do |builder| %>
   				  <%= render :partial => 'issues/checklist_fields', :locals => {:f => builder, :checklist => @checklist} %>
   			  <% end %>

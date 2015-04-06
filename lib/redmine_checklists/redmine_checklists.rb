@@ -25,7 +25,6 @@ Rails.configuration.to_prepare do
   require 'redmine_checklists/patches/issue_patch'
   require 'redmine_checklists/patches/project_patch'
   require 'redmine_checklists/patches/issues_controller_patch'
-  require 'redmine_checklists/patches/add_helpers_for_checklists_patch'
   require 'redmine_checklists/patches/compatibility_patch'
 end
 
