@@ -7,7 +7,7 @@
   	  <%= fields_for :issue, issue do |f| -%>
   	    <span id="checklist_form_items" data-checklist-fields='<%= fields(f, :checklists) %>'>
   			  <%= f.fields_for :checklists do |builder| %>
-  				  <%= render :partial => 'checklist_fields', :locals => {:f => builder, :checklist => @checklist} %>
+  				  <%= render :partial => 'issues/checklist_fields', :locals => {:f => builder, :checklist => @checklist} %>
   			  <% end %>
         </span>
   		<% end %>

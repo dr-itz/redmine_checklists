@@ -31,7 +31,8 @@ module ChecklistsHelper
 
   def fields(f, association)
     @fields ||= f.fields_for(association, new_object(f, association), :child_index => "new_#{association}") do |builder|
-      render(association.to_s.singularize + "_fields", :f => builder)
+      partial = "issues/" + association.to_s.singularize + "_fields"
+      render :partial => partial, :locals => { :f => builder }
     end
   end
 
